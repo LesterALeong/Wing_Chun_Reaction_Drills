@@ -25,7 +25,7 @@ chi_sau_moves = [
     "Wu Sau (Protecting Hand)"
 ]
 
-def run_reaction_drill(moves, duration):
+def run_reaction_drill(moves, duration, mode):
     """Runs the reaction drill with given moves and duration."""
     start_time = time.time()
     placeholder = st.empty()
@@ -35,7 +35,10 @@ def run_reaction_drill(moves, duration):
         interval = random.randint(3, 10)
 
         with placeholder.container():
-            st.subheader(f"Perform: {move}")
+            if mode == "Vs Kickboxer":
+                st.subheader(f"Defend against: {move}")
+            else:
+                st.subheader(f"Perform: {move}")
             st.write(f"Next move in {interval} seconds")
 
         time.sleep(interval)
@@ -49,7 +52,7 @@ st.title("Wing Chun Reaction Drill")
 # Select mode
 mode = st.selectbox(
     "Select Mode:",
-    ("Kickboxing", "Chi Sau")
+    ("Vs Kickboxer", "Chi Sau")
 )
 
 # Set duration
@@ -61,7 +64,7 @@ duration = st.slider(
 # Start drill
 if st.button("Start Drill"):
     st.write("Starting drill...")
-    if mode == "Kickboxing":
-        run_reaction_drill(kickboxer_moves, duration)
+    if mode == "Vs Kickboxer":
+        run_reaction_drill(kickboxer_moves, duration, mode)
     elif mode == "Chi Sau":
-        run_reaction_drill(chi_sau_moves, duration)
+        run_reaction_drill(chi_sau_moves, duration, mode)
