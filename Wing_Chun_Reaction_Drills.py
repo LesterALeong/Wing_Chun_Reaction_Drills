@@ -30,15 +30,32 @@ def run_reaction_drill(moves, duration, mode):
     start_time = time.time()
     placeholder = st.empty()
 
+    animation_css = """
+    <style>
+        @keyframes fade {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .animated-text {
+            font-size: 2em;
+            font-weight: bold;
+            color: #FF5733;
+            animation: fade 1s ease-in-out;
+            text-align: center;
+        }
+    </style>
+    """
+
     while time.time() - start_time < duration * 60:
         move = random.choice(moves)
         interval = random.randint(3, 10)
 
         with placeholder.container():
+            st.markdown(animation_css, unsafe_allow_html=True)
             if mode == "Vs Kickboxer":
-                st.subheader(f"Defend against: {move}")
+                st.markdown(f"<div class='animated-text'>Defend against: {move}</div>", unsafe_allow_html=True)
             else:
-                st.subheader(f"Perform: {move}")
+                st.markdown(f"<div class='animated-text'>Perform: {move}</div>", unsafe_allow_html=True)
             st.write(f"Next move in {interval} seconds")
 
         time.sleep(interval)
