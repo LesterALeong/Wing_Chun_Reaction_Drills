@@ -17,12 +17,14 @@ kickboxer_moves = [
 chi_sau_moves = [
     "Tan Sau (Palm-Up Block)",
     "Bong Sau (Wing Arm)",
-    "Fuk Sau (Resting Hand)",
     "Pak Sau (Slapping Hand)",
     "Lap Sau (Pulling Hand)",
     "Jum Sau (Sinking Hand)",
     "Huen Sau (Circling Hand)",
-    "Wu Sau (Protecting Hand)"
+    "Gam Sau (Pressing Hand)",
+    "Kwon Sau (Rotating Hand)",
+    "Gum Sau (Pinning Hand)",
+    "Continue Rolling"
 ]
 
 def run_reaction_drill(moves, duration, mode):
