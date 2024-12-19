@@ -29,6 +29,7 @@ def run_reaction_drill(moves, duration, mode):
     """Runs the reaction drill with given moves and duration."""
     start_time = time.time()
     placeholder = st.empty()
+    countdown_placeholder = st.empty()
 
     animation_css = """
     <style>
@@ -56,11 +57,13 @@ def run_reaction_drill(moves, duration, mode):
                 st.markdown(f"<div class='animated-text'>Defend against: {move}</div>", unsafe_allow_html=True)
             else:
                 st.markdown(f"<div class='animated-text'>Perform: {move}</div>", unsafe_allow_html=True)
-            st.write(f"Next move in {interval} seconds")
 
-        time.sleep(interval)
+        for i in range(interval, 0, -1):
+            countdown_placeholder.markdown(f"<div style='text-align: center; font-size: 1.5em;'>Next move in: {i} seconds</div>", unsafe_allow_html=True)
+            time.sleep(1)
 
     placeholder.empty()
+    countdown_placeholder.empty()
     st.write("Drill complete! Good job!")
 
 # Streamlit app
